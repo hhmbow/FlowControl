@@ -19,6 +19,7 @@ class program
 
             Console.WriteLine("\nVälj nummer:\n1. För priser tryck 1." +
                 "\n2. För sällskap totalkostnad tryck 2." +
+                "\n3. För att skriv utt strin 10 gånger tryck 3." +
                 "\n0. För att avsluta programmet tryck 0.\n");
             string input = Console.ReadLine();
 
@@ -29,6 +30,9 @@ class program
                     break;
                 case "2":
                    FlowControl.Utilities.GroupPrice();
+                    break;
+                case "3":  
+                        FlowControl.Utilities.nTimes();
                     break;
                 case "0":
                     running = false;

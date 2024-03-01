@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FlowControl
@@ -10,7 +12,7 @@ namespace FlowControl
     {
 
         // price checker with if else
-       public static void PriceCheker()
+        public static void PriceCheker()
         {
             Console.WriteLine("?\nAnge årlder:");
             int age = int.Parse(Console.ReadLine()); // parsing string to int.
@@ -58,6 +60,39 @@ namespace FlowControl
             }
             Console.WriteLine($"\nAntal personer: {numberOfPeople}, total kostnad: {totalCost}kr. ");
 
+        }
+
+        public static void nTimes()
+        {
+            Console.WriteLine("Skriv en mening För att skriv ut 10 gånger \n");
+            string NTimes = Console.ReadLine().Trim();
+            string input;
+            bool validInput = false;
+
+            {
+                if (Regex.IsMatch(NTimes, @"^[a-zA-Z]+\s[a-zA-Z]+\s[a-zA-Z]+$"))
+                {
+                    validInput = true;
+ for (int i = 0; i < 10; i++)
+                {
+                    Console.Write($" Loop Nummer {i + 1}: {NTimes} ");
+                }
+
+                }
+                else
+                {
+                    Console.WriteLine("\nInmatningen är ogiltig. Vänligen ange en mening med exakt tre ord," +
+                        " som endast innehåller bokstäver från A till Z. \n");
+                }
+
+
+               
+                Console.WriteLine();
+                // string[] Ntimes = Console.ReadLine().Split(' ');
+                //Console.WriteLine(Ntimes[2]);
+
+
+            }
         }
     }
 }

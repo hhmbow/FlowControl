@@ -2,25 +2,31 @@
 //Console.WriteLine("Hello, World!");
 using System;
 
-class program
-{
 
+
+using System;
+using static FlowControl.Utilities; 
+
+class Program
+{
     static void Main(string[] args)
     {
-        //Welkomen meny
-        Console.WriteLine("Welkomen!\ndu har kommit i FlowControl,\nDu " +
-          " komma att navigera genom att skriva in siffror. ");
+        
+        FlowControl.Utilities.StringSplitter splitter = new StringSplitter();
 
-        //while loop med info och methoder
+        
+        Console.WriteLine("Welcome!\nYou have entered the FlowControl.\nYou will navigate by entering numbers.");
+
         bool running = true;
 
         while (running)
         {
+            Console.WriteLine("\nChoose an option:\n1. To check prices, press 1." +
+                "\n2. To calculate the total price for a group, press 2." +
+                "\n3. To print out a sentence 10 times, press 3." +
+                "\n4. To split a sentence into words, press 4." +
+                "\n0. To exit the program, press 0.\n");
 
-            Console.WriteLine("\nVälj nummer:\n1. För priser tryck 1." +
-                "\n2. För sällskap totalkostnad tryck 2." +
-                "\n3. För att skriv utt strin 10 gånger tryck 3." +
-                "\n0. För att avsluta programmet tryck 0.\n");
             string input = Console.ReadLine();
 
             switch (input)
@@ -29,23 +35,24 @@ class program
                     FlowControl.Utilities.PriceCheker();
                     break;
                 case "2":
-                   FlowControl.Utilities.GroupPrice();
+                    FlowControl.Utilities.GroupPrice();
                     break;
-                case "3":  
-                        FlowControl.Utilities.nTimes();
+                case "3":
+                    FlowControl.Utilities.nTimes();
+                    break;
+                case "4":
+                    string words = splitter.GetThirdWordFromSentence(); 
+                   
+                        Console.WriteLine("Det tredje ordet i meningen är: " + words);
+                    
                     break;
                 case "0":
                     running = false;
                     break;
                 default:
-                    Console.WriteLine("Felaktig input.");
+                    Console.WriteLine("Invalid input. Please try again.");
                     break;
             }
         }
-
-
- 
-       
-
     }
 }

@@ -6,16 +6,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+
+
 namespace FlowControl
 {
     public class Utilities
     {
-
-        // price checker with if else
         public static void PriceCheker()
         {
-            Console.WriteLine("?\nAnge årlder:");
-            int age = int.Parse(Console.ReadLine()); // parsing string to int.
+            Console.WriteLine("Ange ålder:");
+            int age = int.Parse(Console.ReadLine());
 
             if (age < 20)
             {
@@ -27,12 +27,10 @@ namespace FlowControl
             }
             else
             {
-                Console.WriteLine("Standardpris 120kr.");
-
+                Console.WriteLine("Standardpris: 120kr.");
             }
         }
 
-        //Total kostnad methoder 
         public static void GroupPrice()
         {
             Console.WriteLine("\nAnge antal personer i sällskapet: ");
@@ -42,7 +40,7 @@ namespace FlowControl
 
             for (int i = 0; i < numberOfPeople; i++)
             {
-                Console.WriteLine($"\nAnge ålder för person {i + 1}: "); // add varje gång 1
+                Console.WriteLine($"\nAnge ålder för person {i + 1}: ");
                 int age = int.Parse(Console.ReadLine());
 
                 if (age < 20)
@@ -58,41 +56,57 @@ namespace FlowControl
                     totalCost += 120;
                 }
             }
-            Console.WriteLine($"\nAntal personer: {numberOfPeople}, total kostnad: {totalCost}kr. ");
 
+            Console.WriteLine($"\nAntal personer: {numberOfPeople}, total kostnad: {totalCost}kr.");
         }
 
         public static void nTimes()
         {
-            Console.WriteLine("Skriv en mening För att skriv ut 10 gånger \n");
-            string NTimes = Console.ReadLine().Trim();
-            string input;
-            bool validInput = false;
+            Console.WriteLine("Skriv en mening som ska skrivas ut 10 gånger:\n");
+            string input = Console.ReadLine().Trim();
 
+            // Validate input
+            if (!Regex.IsMatch(input, @"^\b[a-zA-Z]+\b\s\b[a-zA-Z]+\b\s\b[a-zA-Z]+\b$"))
             {
-                if (Regex.IsMatch(NTimes, @"^[a-zA-Z]+\s[a-zA-Z]+\s[a-zA-Z]+$"))
-                {
-                    validInput = true;
- for (int i = 0; i < 10; i++)
-                {
-                    Console.Write($" Loop Nummer {i + 1}: {NTimes} ");
-                }
+                Console.WriteLine("\nOgiltig inmatning. Ange en mening med exakt tre ord, som endast innehåller bokstäver från A till Z.\n");
+                return;
+            }
 
-                }
-                else
-                {
-                    Console.WriteLine("\nInmatningen är ogiltig. Vänligen ange en mening med exakt tre ord," +
-                        " som endast innehåller bokstäver från A till Z. \n");
-                }
-
-
-               
-                Console.WriteLine();
-                // string[] Ntimes = Console.ReadLine().Split(' ');
-                //Console.WriteLine(Ntimes[2]);
-
-
+            // Print the input 10 times
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"Loop Nummer {i + 1}: {input}");
             }
         }
+
+       
+
+   
+
+public class StringSplitter
+    {
+        public string GetThirdWordFromSentence()
+        {
+            Console.WriteLine("Enter a sentence with at least 3 words:");
+            string sentence = Console.ReadLine().Trim(); 
+            string[] words = sentence.Split(' '); 
+
+            if (words.Length < 3)
+            {
+                Console.WriteLine("The sentence does not contain at least 3 words.");
+                return null; 
+            }
+
+
+            string thirdWord = words[2];
+
+           
+            return thirdWord;
+        }
     }
+
+
+
 }
+}
+       
